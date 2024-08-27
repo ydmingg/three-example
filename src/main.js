@@ -25,11 +25,12 @@ let mixer = null
 const fbxLoader = new FBXLoader()
 fbxLoader.load('../static/Waving Gesture.fbx', function (object) {
     console.log(object);
-    object.geometry.computeBoundingBox();
-    object.geometry.center()
-    object.scale.set(0, 0, 0)
+    // object.geometry.computeBoundingBox();
+    // object.geometry.center()
+    object.position.set(0, -80, 0)
     
     mixer = new THREE.AnimationMixer(object)
+    
     for (let i = 0; i < object.animations.length; i++) {
         action[i] = mixer.clipAction(object.animations[i])
         // console.log(mixer.clipAction(object.animations[i]));
@@ -51,7 +52,7 @@ fbxLoader.load('../static/Waving Gesture.fbx', function (object) {
 
 // 摄像机
 const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000)
-camera.position.set(100,50,300)
+camera.position.set(20,50,200)
 
 camera.lookAt(scene.position)
 
